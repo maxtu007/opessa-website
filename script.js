@@ -97,16 +97,24 @@
       submitBtn.disabled = true;
       formNote.textContent = '';
 
-      // ── Swap this timeout with a real form handler ──
-      // e.g. fetch('/api/contact', { method: 'POST', body: new FormData(form) })
-      // or use Formspree: action="https://formspree.io/f/YOUR_ID" method="POST"
-      setTimeout(() => {
-        submitBtn.textContent = 'Sent';
-        formNote.textContent = "Thanks — we'll be in touch shortly.";
-        formNote.style.color = '#5a5a5a';
-        form.reset();
-        if (interestSelect) interestSelect.classList.remove('has-value');
-      }, 900);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(() => {
+          submitBtn.textContent = 'Sent';
+          formNote.textContent = "Thanks — we'll be in touch shortly.";
+          formNote.style.color = '#5a5a5a';
+          form.reset();
+          if (interestSelect) interestSelect.classList.remove('has-value');
+        })
+        .catch(() => {
+          submitBtn.textContent = 'Send Inquiry';
+          submitBtn.disabled = false;
+          formNote.textContent = 'Something went wrong. Please try again.';
+          formNote.style.color = '#cc2b2b';
+        });
     });
   }
 
