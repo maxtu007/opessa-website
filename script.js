@@ -120,25 +120,42 @@
 
 
   // ── HERO AUDIO TOGGLE ────────────────────────────────────────
-  // Browsers require autoplay to be muted. The button lets users unmute.
+  // Video must start muted for autoplay. We show "Audio on" by default
+  // and unmute on first user interaction (scroll/click/touch).
   const heroVideo    = document.getElementById('heroVideo');
   const heroAudioBtn = document.getElementById('heroAudioBtn');
 
   if (heroVideo && heroAudioBtn) {
-    const iconMuted = heroAudioBtn.querySelector('.icon-muted');
-    const iconSound = heroAudioBtn.querySelector('.icon-sound');
+    const iconMuted  = heroAudioBtn.querySelector('.icon-muted');
+    const iconSound  = heroAudioBtn.querySelector('.icon-sound');
     const audioLabel = heroAudioBtn.querySelector('.audio-label');
 
+    // Start button in "Audio on" state
+    iconMuted.style.display = 'none';
+    iconSound.style.display = '';
+    audioLabel.textContent  = 'Audio on';
+
+    let userChoseMuted = false;
+
+    // Unmute on first interaction, unless user already clicked the button to mute
+    function onFirstInteraction() {
+      if (!userChoseMuted) heroVideo.muted = false;
+    }
+    document.addEventListener('scroll',     onFirstInteraction, { once: true, passive: true });
+    document.addEventListener('click',      onFirstInteraction, { once: true });
+    document.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+
     heroAudioBtn.addEventListener('click', () => {
-      heroVideo.muted = !heroVideo.muted;
+      heroVideo.muted    = !heroVideo.muted;
+      userChoseMuted     = heroVideo.muted;
       if (heroVideo.muted) {
         iconMuted.style.display = '';
         iconSound.style.display = 'none';
-        audioLabel.textContent = 'Tap for audio';
+        audioLabel.textContent  = 'Tap for audio';
       } else {
         iconMuted.style.display = 'none';
         iconSound.style.display = '';
-        audioLabel.textContent = 'Audio on';
+        audioLabel.textContent  = 'Audio on';
       }
     });
 
