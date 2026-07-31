@@ -443,9 +443,9 @@ body {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 6rem;
-  align-items: start;
+  align-items: center;
 }
 
 .about-left h2 {
@@ -458,14 +458,14 @@ body {
 }
 
 /* Body text — darker, larger, clearly readable */
-.about-right p {
+.about-desc {
   color: var(--text-sec);
   margin-bottom: 1.4rem;
   font-size: 1rem;
   line-height: 1.85;
   font-weight: 400;
 }
-.about-right p:last-child { margin-bottom: 0; }
+.about-desc:last-of-type { margin-bottom: 0; }
 
 /* ============================================================
    TAIWAN
@@ -556,6 +556,20 @@ body {
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
+}
+
+.taiwan-visual {
+  height: 100%;
+  min-height: 440px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.taiwan-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .taiwan-footer-note {
@@ -878,6 +892,16 @@ body {
   transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
   cursor: default;
 }
+
+.specialty-item::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 1.1rem;
+  border-radius: 2px;
+}
 .specialty-item:hover {
   background: var(--bg-3);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -1083,19 +1107,68 @@ body {
 }
 
 /* ============================================================
+   FACTORY STRIP
+   ============================================================ */
+
+#factory-strip {
+  /* no padding — edge-to-edge images */
+}
+
+.strip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 420px;
+}
+
+.strip-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.strip-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.strip-panel:hover img {
+  transform: scale(1.03);
+}
+
+.strip-label {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.35rem 0.75rem;
+  border-radius: 3px;
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 
 footer {
-  padding: 3rem 0;
-  border-top: 1px solid var(--border);
-  background: var(--bg);
+  padding: 4rem 0 2rem;
+  border-top: none;
+  background: #111;
 }
 
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  margin-bottom: 1.75rem;
 }
 
 /* Bigger logo in footer */
@@ -1103,18 +1176,63 @@ footer {
   height: 44px;
   width: auto;
   display: block;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
 }
 
-.footer-left p {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
+.footer-brand-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 230px;
+  line-height: 1.6;
 }
 
-.footer-right p {
+.footer-col-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-nav-list li {
+  margin-bottom: 0.55rem;
+}
+
+.footer-nav-list a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.footer-nav-list a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-contact-item {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.45rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-bottom p {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
 }
 
 /* ============================================================
@@ -1179,6 +1297,10 @@ footer {
 
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .taiwan-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .taiwan-visual { min-height: 280px; }
+  .strip-grid { grid-template-columns: 1fr; height: auto; }
+  .strip-panel { height: 260px; }
+  .footer-main { grid-template-columns: 1fr; gap: 2rem; }
   .capabilities-grid { grid-template-columns: 1fr; }
 
   .process-cards {
@@ -1204,14 +1326,629 @@ footer {
   #contactForm { padding: 1.75rem; }
   .form-row { grid-template-columns: 1fr; }
 
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
   .hero-headline { font-size: 3.4rem; }
-  .specialties-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   PAGE HERO — DARK VARIANT (Production Process)
+   ============================================================ */
+
+.page-hero--dark {
+  background: #111;
+  border-bottom: none;
+}
+.page-hero--dark .section-label {
+  color: rgba(255, 255, 255, 0.3);
+}
+.page-hero--dark .page-hero-title {
+  color: #fff;
+}
+.page-hero--dark .page-hero-sub {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ============================================================
+   PRODUCTION PROCESS — FULL-WIDTH STAGE SECTIONS
+   ============================================================ */
+
+.pp-stage-section {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0;
+  border-top: 1px solid var(--border);
+}
+.pp-stage-section:nth-child(odd)  { background: var(--bg); }
+.pp-stage-section:nth-child(even) { background: var(--bg-2); }
+
+.pp-watermark {
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(14rem, 22vw, 24rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: var(--pp-clr, var(--accent));
+  opacity: 0.055;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pp-stage-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.pp-stage-lead-num {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pp-clr, var(--accent));
+  margin-bottom: 1.2rem;
+}
+
+.pp-stage-lead h3 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+}
+
+.pp-stage-body p {
+  color: var(--text-sec);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+/* ============================================================
+   PHILOSOPHY — EDITORIAL LAYOUT
+   ============================================================ */
+
+.phil-editorial {
+  padding: var(--section-v) 0;
+}
+
+.phil-context {
+  max-width: 620px;
+  color: var(--text-sec);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 5rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+}
+
+.phil-value {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.phil-value:last-child {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--section-v);
+}
+
+.phil-value-num {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.phil-value-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.88;
+  color: var(--text);
+}
+
+.phil-value-right {
+  padding-top: 0.75rem;
+}
+.phil-value-right p {
+  color: var(--text-sec);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* ============================================================
+   CAPABILITIES — FEATURED INTRO + SERVICE LIST
+   ============================================================ */
+
+.cap-feature {
+  padding: var(--section-v) 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cap-feature-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.cap-feature-left {
+  position: sticky;
+  top: 7rem;
+}
+
+.cap-feature-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.92;
+  color: var(--text);
+  margin-bottom: 0;
+}
+
+.cap-feature-right p {
+  color: var(--text-sec);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 1.4rem;
+}
+.cap-feature-right p:last-child { margin-bottom: 0; }
+
+.cap-services {
+  padding: var(--section-v) 0;
+}
+
+.cap-service-item {
+  display: grid;
+  grid-template-columns: 52px 260px 1fr;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.cap-service-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.cap-service-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  padding-top: 0.1rem;
+}
+
+.cap-service-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.cap-service-body {
+  color: var(--text-sec);
+  font-size: 0.97rem;
+  line-height: 1.85;
+}
+
+/* ============================================================
+   HOMEPAGE: 2-VIDEO FACTORY LAYOUT
+   ============================================================ */
+
+.process-cards--two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .process-cards--two {
+    max-width: 380px;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   SUB-PAGE HERO
+   ============================================================ */
+
+.page-hero {
+  padding: 9rem 0 5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.page-hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-sec);
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* Active nav state — set via JS on sub-pages */
+.nav-links a.nav-active { color: var(--accent); }
+
+/* ============================================================
+   R&D PAGE
+   ============================================================ */
+
+.rd-section {
+  padding: var(--section-v) 0;
+}
+
+.rd-stage {
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.rd-stage:last-child {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--section-v);
+}
+
+.rd-stage-inner {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.rd-stage-left {
+  position: sticky;
+  top: 7rem;
+}
+
+.rd-stage-num {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rd-clr, var(--accent));
+  margin-bottom: 0.5rem;
+}
+
+.rd-stage-label-text {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.rd-stage-tag {
+  display: inline-block;
+  padding: 0.32rem 0.9rem;
+  border-radius: 99px;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--rd-bg, rgba(204, 43, 43, 0.08));
+  color: var(--rd-clr, var(--accent));
+}
+
+.rd-stage-right h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.rd-stage-right > p {
+  color: var(--text-sec);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 2.2rem;
+  max-width: 600px;
+}
+
+.rd-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.rd-point {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.48rem 0.95rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.83rem;
+  color: var(--text-sec);
+  font-weight: 400;
+}
+
+.rd-point::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rd-clr, var(--accent));
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PRODUCTION PROCESS PAGE
+   ============================================================ */
+
+.pp-visual-break {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+}
+
+.pp-visual-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pp-visual-caption {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pp-intro {
+  padding: var(--section-v) 0 3rem;
+}
+
+.pp-intro p {
+  color: var(--text-sec);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  max-width: 680px;
+}
+
+.pp-stages {
+  padding-bottom: var(--section-v);
+}
+
+.pp-stage {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 3.5rem;
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+
+.pp-stage:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.pp-stage-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pp-clr, var(--accent));
+}
+
+.pp-stage-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.pp-stage-content > p {
+  color: var(--text-sec);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+  max-width: 680px;
+}
+
+.pp-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pp-spec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.88rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  font-size: 0.78rem;
+  color: var(--text-sec);
+  font-weight: 400;
+}
+
+.pp-spec::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pp-clr, var(--accent));
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   CAPABILITIES PAGE — PRODUCT RANGE SECTION
+   ============================================================ */
+
+.cap-range-section {
+  padding: var(--section-v) 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+}
+
+.cap-factory-banner {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+}
+
+.cap-factory-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cap-factory-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  display: flex;
+  align-items: flex-end;
+  padding: 2.5rem var(--pad);
+}
+
+.cap-factory-overlay span {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.03em;
+  max-width: 560px;
+  line-height: 1.2;
+}
+
+/* ============================================================
+   PHILOSOPHY PAGE — VALUES SECTION
+   ============================================================ */
+
+.phil-section {
+  padding: var(--section-v) 0;
+}
+
+.phil-intro {
+  max-width: 680px;
+  color: var(--text-sec);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 4rem;
+}
+
+/* ============================================================
+   RESPONSIVE — SUB-PAGES
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .rd-stage-inner {
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+  }
+
+  .cap-feature-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .cap-feature-left { position: static; }
+
+  .cap-service-item {
+    grid-template-columns: 52px 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .cap-service-body {
+    grid-column: 2 / -1;
+  }
+
+  .pp-stage-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-hero { padding: 7rem 0 3.5rem; }
+
+  .rd-stage-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .rd-stage-left { position: static; }
+
+  .rd-stage-num { font-size: 3.5rem; }
+
+  .pp-stage {
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 0;
+  }
+
+  .pp-stage-num { font-size: 2.5rem; }
+
+  .pp-stage-section { padding: 4rem 0; }
+
+  .pp-stage-lead h3 { font-size: 2.2rem; }
+
+  .pp-watermark { opacity: 0.04; }
+
+  .phil-value {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 3rem 0;
+  }
+
+  .phil-value-name { font-size: 3.2rem; }
+
+  .cap-service-item {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 2rem 0;
+  }
+
+  .cap-service-num { font-size: 1rem; }
 }
