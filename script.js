@@ -4,6 +4,25 @@
 
 (function () {
 
+  // ── NAV DROPDOWN ─────────────────────────────────────────────
+  document.querySelectorAll('.nav-has-dropdown').forEach(function(item) {
+    var btn = item.querySelector('.nav-dropdown-btn');
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.nav-has-dropdown.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav-has-dropdown.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+  });
+
+
   // ── NAV SCROLL ───────────────────────────────────────────────
   const nav = document.getElementById('nav');
 
