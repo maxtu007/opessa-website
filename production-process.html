@@ -20,9 +20,19 @@
         <img src="Opessa%20Logo.png" alt="Opessa">
       </a>
       <ul class="nav-links">
-        <li><a href="capabilities.html">Capabilities</a></li>
+        <li class="nav-has-dropdown">
+          <button class="nav-dropdown-btn">
+            Capabilities
+            <svg class="nav-dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="nav-dropdown-list">
+            <li><a href="production-process.html">Production Process</a></li>
+            <li><a href="range.html">Range</a></li>
+          </ul>
+        </li>
         <li><a href="rd.html">R&amp;D</a></li>
-        <li><a href="production-process.html">Process</a></li>
         <li><a href="quality.html">Quality &amp; Compliance</a></li>
         <li><a href="philosophy.html">Philosophy</a></li>
         <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
@@ -37,17 +47,17 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="menuClose" aria-label="Close">&#x2715;</button>
     <ul>
-      <li><a href="capabilities.html" class="mobile-link">Capabilities</a></li>
+      <li><a href="production-process.html" class="mobile-link">Production Process</a></li>
+      <li><a href="range.html" class="mobile-link">Range</a></li>
       <li><a href="rd.html" class="mobile-link">R&amp;D</a></li>
-      <li><a href="production-process.html" class="mobile-link">Process</a></li>
       <li><a href="quality.html" class="mobile-link">Quality &amp; Compliance</a></li>
       <li><a href="philosophy.html" class="mobile-link">Philosophy</a></li>
       <li><a href="index.html#contact" class="mobile-link">Contact</a></li>
     </ul>
   </div>
 
-  <!-- PAGE HERO — DARK -->
-  <section class="page-hero page-hero--dark fade-section">
+  <!-- PAGE HERO -->
+  <section class="page-hero fade-section">
     <div class="container">
       <p class="section-label">Manufacturing</p>
       <h1 class="page-hero-title">Production<br>Process</h1>
@@ -119,11 +129,6 @@
     </div>
   </section>
 
-  <!-- FILLING VISUAL -->
-  <div class="pp-visual-break">
-    <img src="filling-machine.jpg" alt="Rotary beverage filling machine in operation" loading="lazy">
-    <div class="pp-visual-caption">Precision filling at every stage.</div>
-  </div>
 
   <!-- STAGE 04 — LABELING -->
   <section class="pp-stage-section fade-section" style="--pp-clr: #0d9488;">

@@ -20,9 +20,19 @@
         <img src="Opessa%20Logo.png" alt="Opessa">
       </a>
       <ul class="nav-links">
-        <li><a href="capabilities.html">Capabilities</a></li>
+        <li class="nav-has-dropdown">
+          <button class="nav-dropdown-btn">
+            Capabilities
+            <svg class="nav-dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="nav-dropdown-list">
+            <li><a href="production-process.html">Production Process</a></li>
+            <li><a href="range.html">Range</a></li>
+          </ul>
+        </li>
         <li><a href="rd.html">R&amp;D</a></li>
-        <li><a href="production-process.html">Process</a></li>
         <li><a href="quality.html">Quality &amp; Compliance</a></li>
         <li><a href="philosophy.html">Philosophy</a></li>
         <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
@@ -37,9 +47,9 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="menuClose" aria-label="Close">&#x2715;</button>
     <ul>
-      <li><a href="capabilities.html" class="mobile-link">Capabilities</a></li>
+      <li><a href="production-process.html" class="mobile-link">Production Process</a></li>
+      <li><a href="range.html" class="mobile-link">Range</a></li>
       <li><a href="rd.html" class="mobile-link">R&amp;D</a></li>
-      <li><a href="production-process.html" class="mobile-link">Process</a></li>
       <li><a href="quality.html" class="mobile-link">Quality &amp; Compliance</a></li>
       <li><a href="philosophy.html" class="mobile-link">Philosophy</a></li>
       <li><a href="index.html#contact" class="mobile-link">Contact</a></li>
@@ -51,25 +61,30 @@
     <div class="container">
       <p class="section-label">Research &amp; Development</p>
       <h1 class="page-hero-title">R&amp;D &amp;<br>Product Design</h1>
-      <p class="page-hero-sub">From first idea to production-ready formula — a disciplined three-stage process that balances creativity with real-world manufacturing constraints.</p>
+      <p class="page-hero-sub">Research and development is the core of what we do. A disciplined four-stage process that moves from concept to production-ready formula — balancing innovation with real-world manufacturing requirements.</p>
     </div>
   </section>
+
+  <!-- R&D VISUAL -->
+  <div class="fade-section" style="padding: 0 2rem 4rem; display: flex; justify-content: center;">
+    <img src="rd-visual.png" alt="R&D process — design, development, trial, evaluation" style="width: 100%; max-width: 960px; border-radius: 12px; display: block;">
+  </div>
 
   <!-- R&D STAGES -->
   <section class="rd-section">
     <div class="container">
 
-      <!-- STAGE 01: Product R&D -->
+      <!-- STAGE 01: Product Design -->
       <div class="rd-stage fade-section" style="--rd-clr: #4f46e5; --rd-bg: rgba(79, 70, 229, 0.09); background: linear-gradient(105deg, rgba(79, 70, 229, 0.04) 0%, transparent 55%);">
         <div class="rd-stage-inner">
           <div class="rd-stage-left">
             <div class="rd-stage-num">01</div>
             <div class="rd-stage-label-text">Stage One</div>
-            <span class="rd-stage-tag">Research</span>
+            <span class="rd-stage-tag">Design</span>
           </div>
           <div class="rd-stage-right">
-            <h3>Product Research &amp; Development</h3>
-            <p>Every product starts as an idea — and we take those ideas seriously. Our R&D process evaluates each concept against real production constraints, quality shelf-life requirements, and market fit. Before a formula touches the line, we've already asked: can it be made consistently, and will it resonate in the market it's built for?</p>
+            <h3>Product Design</h3>
+            <p>Every product begins with an idea — and we take that seriously. New concepts are evaluated against production feasibility, quality preservation requirements, and market acceptance before development begins. This stage defines the commercial and technical parameters that guide everything downstream.</p>
             <div class="rd-points">
               <span class="rd-point">New concept evaluation</span>
               <span class="rd-point">Production feasibility assessment</span>
@@ -80,17 +95,17 @@
         </div>
       </div>
 
-      <!-- STAGE 02: Product Trial -->
+      <!-- STAGE 02: Product R&D -->
       <div class="rd-stage fade-section" style="--rd-clr: #d97706; --rd-bg: rgba(217, 119, 6, 0.09); background: linear-gradient(105deg, rgba(217, 119, 6, 0.04) 0%, transparent 55%);">
         <div class="rd-stage-inner">
           <div class="rd-stage-left">
             <div class="rd-stage-num">02</div>
             <div class="rd-stage-label-text">Stage Two</div>
-            <span class="rd-stage-tag">Sampling</span>
+            <span class="rd-stage-tag">R&amp;D</span>
           </div>
           <div class="rd-stage-right">
-            <h3>Customised Product Sampling</h3>
-            <p>Raw material selection isn't a checkbox — it's a decision with downstream consequences. We assess ingredient sources for quality consistency, supply chain reliability, and cost viability before our R&D centre produces tailored product samples ready for client evaluation and sign-off.</p>
+            <h3>Product R&amp;D</h3>
+            <p>Raw material selection shapes everything downstream. Ingredient sources are assessed for quality consistency, supply reliability, and cost viability. Our R&D centre then produces tailored samples built to the agreed specification — refined through client review cycles until the formulation meets sign-off requirements.</p>
             <div class="rd-points">
               <span class="rd-point">Raw material source assessment</span>
               <span class="rd-point">Supply chain &amp; cost evaluation</span>
@@ -101,21 +116,41 @@
         </div>
       </div>
 
-      <!-- STAGE 03: Quality Testing -->
-      <div class="rd-stage fade-section" style="--rd-clr: #059669; --rd-bg: rgba(5, 150, 105, 0.09); background: linear-gradient(105deg, rgba(5, 150, 105, 0.04) 0%, transparent 55%);">
+      <!-- STAGE 03: Product Trial -->
+      <div class="rd-stage fade-section" style="--rd-clr: #0d9488; --rd-bg: rgba(13, 148, 136, 0.09); background: linear-gradient(105deg, rgba(13, 148, 136, 0.04) 0%, transparent 55%);">
         <div class="rd-stage-inner">
           <div class="rd-stage-left">
             <div class="rd-stage-num">03</div>
             <div class="rd-stage-label-text">Stage Three</div>
+            <span class="rd-stage-tag">Trial</span>
+          </div>
+          <div class="rd-stage-right">
+            <h3>Product Trial</h3>
+            <p>Before full-scale production, every formula runs through a controlled trial on the production line. Process parameters and quality data are captured at each step — validating consistency, yield, and compliance before scale-up approval. Nothing advances without this verification.</p>
+            <div class="rd-points">
+              <span class="rd-point">Small-batch production line testing</span>
+              <span class="rd-point">Process data capture</span>
+              <span class="rd-point">Yield &amp; consistency validation</span>
+              <span class="rd-point">Pre-production sign-off</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 04: Quality Testing -->
+      <div class="rd-stage fade-section" style="--rd-clr: #059669; --rd-bg: rgba(5, 150, 105, 0.09); background: linear-gradient(105deg, rgba(5, 150, 105, 0.04) 0%, transparent 55%);">
+        <div class="rd-stage-inner">
+          <div class="rd-stage-left">
+            <div class="rd-stage-num">04</div>
+            <div class="rd-stage-label-text">Stage Four</div>
             <span class="rd-stage-tag">Testing</span>
           </div>
           <div class="rd-stage-right">
-            <h3>Comprehensive Quality Testing</h3>
-            <p>No product advances to production scale without passing a rigorous testing phase. We run every formula through a battery of safety, stability, and sensory evaluations — because what performs in a lab needs to perform consistently on shelf, in market, and across every unit produced.</p>
+            <h3>Quality Testing</h3>
+            <p>No product advances to production scale without passing a comprehensive evaluation. Every formula is tested across storage stability, food safety, microbiological, sensory, and nutritional dimensions — confirming it performs consistently across its full shelf life and across every unit produced.</p>
             <div class="rd-points">
               <span class="rd-point">Storage &amp; shelf-life testing</span>
-              <span class="rd-point">Safety testing</span>
-              <span class="rd-point">Microbiological testing</span>
+              <span class="rd-point">Safety &amp; microbiological testing</span>
               <span class="rd-point">Flavour &amp; colour evaluation</span>
               <span class="rd-point">Nutritional value testing</span>
             </div>
@@ -137,9 +172,9 @@
         <div class="footer-col">
           <p class="footer-col-title">Pages</p>
           <ul class="footer-nav-list">
-            <li><a href="capabilities.html">Capabilities</a></li>
+            <li><a href="production-process.html">Production Process</a></li>
+            <li><a href="range.html">Range</a></li>
             <li><a href="rd.html">R&amp;D</a></li>
-            <li><a href="production-process.html">Process</a></li>
             <li><a href="quality.html">Quality &amp; Compliance</a></li>
             <li><a href="philosophy.html">Philosophy</a></li>
           </ul>
