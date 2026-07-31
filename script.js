@@ -35,6 +35,25 @@
   mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
 
 
+  // ── STAGGER CHILDREN ─────────────────────────────────────────
+  const staggerWraps = document.querySelectorAll('[data-stagger-wrap]');
+
+  const staggerObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const items = entry.target.querySelectorAll('[data-stagger]');
+        items.forEach((item, i) => {
+          item.style.transitionDelay = `${i * 90}ms`;
+          item.classList.add('stagger-in');
+        });
+        staggerObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  staggerWraps.forEach(el => staggerObs.observe(el));
+
+
   // ── FADE-IN SECTIONS ─────────────────────────────────────────
   const fadeSections = document.querySelectorAll('.fade-section');
 
